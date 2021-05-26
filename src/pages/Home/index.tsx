@@ -37,7 +37,9 @@ const Home = (): JSX.Element => {
     async function loadProducts() {
       const response = await api.get<Product[]>('products') // assim eu pego todos os produtos 
 
-      const data = response.data.map(product => ({
+      const data = response.data.map(product => ({ 
+        // o map vai basicamente pegar para cada produto do array, colocar o "price" de uma maneira formatada. 
+        // Assim no front quando responder, ele ja devolve do formato ok 
         ...product,
         priceFormatted: formatPrice(product.price)
       }))
